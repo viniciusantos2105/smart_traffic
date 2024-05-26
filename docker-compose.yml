@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  db:
+    image: oracleinanutshell/oracle-xe-11g
+    restart: always
+    container_name: db
+    environment:
+      ORACLE_ALLOW_REMOTE: true
+      ORACLE_DATABASE: smart_traffic
+      ORACLE_USERNAME: oracle
+      ORACLE_PASSWORD: rootSenha
+      ORACLE_SID: XE
+    ports:
+      - "1523:1523"
+    volumes:
+      - oracle-data:/var/lib/oracle/data
+    networks:
+      - mynetwork
+
+  app:
+    image: davisants/smart_traffic
+    restart: always
+    build: ./smart_traffic
+    working_dir: /app
+    container_name: smart_traffic
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//db:1523/smart_traffic
+      SPRING_DATASOURCE_USERNAME: oracle
+      SPRING_DATASOURCE_PASSWORD: rootSenha
+      SPRING_APPLICATION_NAME: smart_traffic_management_system
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  oracle-data:

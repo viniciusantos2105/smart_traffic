@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: smart_traffic_management_system
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    driverClassName: oracle.jdbc.OracleDriver
+    username: ORC
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: db/changelog/changelog-master.xml
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:my-secret-key}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+

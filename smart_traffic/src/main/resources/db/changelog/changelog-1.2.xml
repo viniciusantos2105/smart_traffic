@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="dev">
+        <sql>
+            CREATE TABLE TRAFFIC_PATTERN
+            (
+                TRAFFIC_PATTERN_ID       NUMBER GENERATED ALWAYS AS IDENTITY,
+                TRAFFIC_PATTERN_LOCATION VARCHAR2(255),
+                TRAFFIC_PATTERN_TIME     TIMESTAMP,
+                TRAFFIC_PATTERN_VOLUME   VARCHAR2(255),
+                ROUTE_ID                 NUMBER,
+                PRIMARY KEY (TRAFFIC_PATTERN_ID),
+                FOREIGN KEY (ROUTE_ID) REFERENCES ROUTE (ROUTE_ID)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

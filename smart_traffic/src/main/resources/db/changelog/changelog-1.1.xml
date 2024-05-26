@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2" author="dev">
+        <sql>
+            CREATE TABLE ACCIDENT
+            (
+                ACCIDENT_ID NUMBER GENERATED ALWAYS AS IDENTITY,
+                ACCIDENT_LOCATION VARCHAR2(255),
+                ACCIDENT_TIME TIMESTAMP,
+                ACCIDENT_SEVERITY VARCHAR2(255),
+                ACCIDENT_INVOLVED_VEHICLES NUMBER,
+                ROUTE_ID NUMBER,
+                PRIMARY KEY (ACCIDENT_ID),
+                FOREIGN KEY (ROUTE_ID) REFERENCES ROUTE (ROUTE_ID)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

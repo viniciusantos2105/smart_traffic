@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="dev">
+        <sql>
+            CREATE TABLE ROUTE
+            (
+                ROUTE_ID             NUMBER GENERATED ALWAYS AS IDENTITY,
+                ROUTE_START_LOCATION VARCHAR2(255),
+                ROUTE_END_LOCATION   VARCHAR2(255),
+                ROUTE_DISTANCE       NUMBER,
+                PRIMARY KEY (ROUTE_ID)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

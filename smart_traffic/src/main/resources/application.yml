@@ -2,9 +2,9 @@ spring:
   application:
     name: smart_traffic_management_system
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    url: jdbc:oracle:thin:@//localhost:1523/XEPDB1
     driverClassName: oracle.jdbc.OracleDriver
-    username: ORC
+    username: SYSTEM
     password: root
   jpa:
     database-platform: org.hibernate.dialect.OracleDialect
